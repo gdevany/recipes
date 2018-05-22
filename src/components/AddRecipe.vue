@@ -22,7 +22,7 @@
 			<div class="col-12" v-if="titleGiven === true && cloudinaryInfo.successDL === false">
 				Please select one or more search tags for this recipe:
 			</div>
-			<div class="col-5 form-check form-check-inline" v-if='titleGiven === true && cloudinaryInfo.successDL === false' v-for="food in foodSubjects">
+			<span class="form-check form-check-inline" v-if='titleGiven === true && cloudinaryInfo.successDL === false' v-for="food in foodSubjects">
 				<label :for='food'>
 					<input
 						type='checkbox'
@@ -30,26 +30,30 @@
 						:value='food'
 						v-model='cloudinaryInfo.category'>&nbsp{{ food }}
 				</label>
-			</div>
+			</span>
 		</form>
   	<div class="col-12" v-if="cloudinaryInfo.category.length > 1 && cloudinaryInfo.successDL === false">
 			<input
 				type="file"
-				class="form-control"
+				class="form-control title-done"
 				@change="upload(cloudinaryInfo, $event)"
 				accept="image/*"/>
 		</div>
-		<div v-if="cloudinaryInfo.successDL === true" v-for="recipe in cloudinaryInfo.recipes">
+		<div
+				v-if="cloudinaryInfo.successDL === true"
+				v-for="recipe in cloudinaryInfo.recipes"
+				class="col-12 d-flex flex-column align-items-center">
 			<span>Congratulations! You have added another YUMMY!</span>
 			<img :src="recipe.url" />
 			<h2>{{ recipe.title }}</h2>
 			<span>{{ recipe.description }}</span>
 			<span>{{ recipe.tags }}</span>
+			<button
+				class="btn btn-primary"
+				@click="setPage('home')"
+				v-if="cloudinaryInfo.successDL === true">Take me back home
+			</button>
 		</div>
-		<button
-			class="btn btn-primary"
-			@click="setPage('home')"
-			v-if="cloudinaryInfo.successDL === true">Take me back home</button>
   </div>
 </template>
 
@@ -106,17 +110,25 @@ export default {
 </script>
 
 <style scoped>
-label {
-	font-size: 1.5rem;
-	margin: .5rem 1.5rem;
-}
+	label {
+		font-size: 1.5rem;
+		margin: .5rem 1.5rem;
+	}
 
-img {
-	height: 200px;
-	width: auto;
-}
+	img {
+		height: 200px;
+		width: auto;
+	}
 
-.title-done {
-	margin-bottom: 3rem;
-}
+	button {
+		margin: 2rem;
+	}
+
+	span {
+		margin-bottom: 1rem;
+	}
+
+	.title-done {
+		margin-bottom: 3rem;
+	}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-fluid mainDivApp">
 		<app-header></app-header>
 		<app-recipes></app-recipes>
   </div>
@@ -22,6 +22,12 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
+	.mainDivApp {
+		background-color: #bbc19859;
+		min-height: 100vh;
+		padding-left: 3rem;
+		padding-right: 3rem;
 
+	}
 </style>

@@ -1,5 +1,5 @@
 <template>
-	<div class="row">
+	<div class="row mainDivRecipe">
 		<h1
 			v-if="this.$store.getters.getPageSelected === 'home'"
 			class="col-12 text-center">Home
@@ -43,8 +43,16 @@ export default {
 }
 </script>
 
-<style lang="scss">
-button {
-	margin: 20px;
-}
+<style scoped>
+	button {
+		margin: 20px;
+	}
+
+	.mainDivRecipe {
+		/* background-image:`url($require('../../src/assets/deserts.JPG'))`; */
+		background-color: #42aba85e;
+		padding: 10px;
+		margin: 10px;
+	}
+
 </style>

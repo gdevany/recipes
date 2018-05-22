@@ -1,8 +1,8 @@
 <template>
-  <div class="row justify-content-center">
+  <div class="col-12 justify-content-center">
 		<h1 class="col-12 text-center">Search</h1>
-		<span class="col-12 text-center title-done">Select one:</span>
-		<div class="form-check form-check-inline title-done" v-for="food in foodSubjects">
+		<div class="col-12 text-center title-done">Select one:</div>
+		<span class="form-check form-check-inline title-done" v-for="food in foodSubjects">
 			<label :for='food'>
 				<input
 					type='radio'
@@ -10,7 +10,7 @@
 					:value='food'
 					v-model='foodChosen'>&nbsp{{ food }}
 			</label>
-		</div>
+		</span>
 		<br>
 		<button class="col-12 btn btn-primary" @click="setPage('searchResults')">Search</button>
 	</div>
