@@ -1,10 +1,13 @@
 <template>
   <div class="row col-12 justify-content-center">
 		<h1 class="col-12 text-center">Search Results</h1>
+		<h4 class="col-12 text-center">{{ this.$store.state.searchWord }}</h4>
 		<span class="col-12 text-center title-done">Select one:</span>
-		<div v-for="recipe in recipes">
-			<div class="recipe">
-				<img v-bind:src="recipe.url" />
+		<div v-for="recipe in recipes" class="results">
+			<div class="d-flex flex-column align-items-center">
+				<img :src="recipe.url" />
+				<h4>{{ recipe.title }}</h4>
+				<span>{{ recipe.description }}</span>
 			</div>
 		</div>
 	</div>
@@ -27,10 +30,13 @@ export default {
 	},
 	created() {
 		axios.get(
-      `https://res.cloudinary.com/${this.$store.state.cloudName}/image/list/${this.$store.state.projectMainImageTag}.json`
+      `https://res.cloudinary.com/${this.$store.state.cloudName}/image/list/${this.$store.state.searchWord}.json`
     ).then(res => {
 			this.recipes = res.data.resources.map(t => {
+				console.log(t);
 				return {
+					title: t.context.custom.title,
+					description: t.context.custom.caption,
 					publicId: t.public_id,
 					url: `https://res.cloudinary.com/${this.$store.state.cloudName}/image/upload/v${t.version}/${t.public_id}.jpg`
 				}
@@ -49,5 +55,10 @@ export default {
 
 	.title-done {
 		margin-bottom: 3rem;
+	}
+
+	.results {
+		min-width: 15rem;
+		margin: 2rem;
 	}
 </style>

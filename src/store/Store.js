@@ -13,23 +13,32 @@ export const store = new Vuex.Store({
 		CLOUDINARY_UPLOAD_URL: 'https://api.cloudinary.com/v1_1/gdevany/image/upload',
 		projectMainImageTag: 'recipe',
 		loggedIn: false,
-		recipeChosen: '',
+		searchWord: '',
 		cloudName: 'gdevany',
 		cloudinaryFilePath: 'devany/recipes'
 	},
+
 	getters: {
 		getPageSelected: state => {
 			return state.pageSelected;
 		}
 	},
+
 	mutations: {
 		setPage: (state, payload) => {
 			state.pageSelected = payload
+		},
+		searchWordChosen: (state, payload) => {
+			state.searchWord = payload;
 		}
 	},
+
 	actions: {
 		setPage: ({ commit }, payload) => {
 			commit('setPage', payload)
+		},
+		searchWordChosen: ({ commit }, payload) => {
+			commit('searchWordChosen', payload)
 		}
 	}
 })

@@ -12,7 +12,7 @@
 			</label>
 		</span>
 		<br>
-		<button class="col-12 btn btn-primary" @click="setPage('searchResults')">Search</button>
+		<button class="col-12 btn btn-primary" @click="searchIt">Search</button>
 	</div>
 </template>
 
@@ -28,8 +28,12 @@ export default {
 	},
 	methods: {
 		...mapActions([
-			'setPage'
-		])
+			'setPage', 'searchWordChosen'
+		]),
+		searchIt() {
+			this.setPage('searchResults');
+			this.searchWordChosen(this.foodChosen);
+		}
 	}
 }
 </script>

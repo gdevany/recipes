@@ -1,11 +1,11 @@
 <template>
 	<div class="row justify-content-center mainDivHeader">
-		<div class="col-12 d-flex justify-content-center">
+		<div class="col-12 d-flex justify-content-center title-done">
 			<img src="../assets/ydsyummys.png" class="d-inline-block align-top">
 		</div>
 		<hr>
 		<hr>
-		<div justify-content-around>
+		<div class="">
 			<button class="btn btn-primary" @click="setPage('home')">Home</button>
 			<button class="btn btn-primary" @click="setPage('search')">Search</button>
 			<button class="btn btn-primary" @click="setPage('addRecipe')">Add Recipe</button>
@@ -31,19 +31,23 @@ export default {
 </script>
 
 <style scoped>
-img {
-	/* width: auto;
-	height: 2rem; */
-}
+	img {
+		/* width: auto;
+		height: 2rem; */
+	}
 
-.mainDivHeader {
-	margin-bottom: 1.5rem;
-	border-bottom: 1px solid grey;
-	background-color: #809f9e5e;
-	padding: 1.5rem;
-}
+	.title-done {
+		margin-bottom: 3rem;
+	}
 
-button {
-	margin: 10px;
-}
+	.mainDivHeader {
+		margin-bottom: 1.5rem;
+		border-bottom: 1px solid grey;
+		background-color: #809f9e5e;
+		padding: 1.5rem;
+	}
+
+	button {
+		margin: 10px;
+	}
 </style>
