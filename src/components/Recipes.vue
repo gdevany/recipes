@@ -22,7 +22,7 @@ import { mapActions } from 'vuex';
 export default {
 	data() {
 		return {
-
+			// bgImage: require("../assets/deserts.png")
 		}
 	},
 	computed: {
@@ -49,8 +49,9 @@ export default {
 	}
 
 	.mainDivRecipe {
-		/* background-image:`url($require('../../src/assets/deserts.JPG'))`; */
-		background-color: #42aba85e;
+		/* background-image: url(require("../assets/deserts.png")); */
+		/* background-color: #42aba85e; */
+		min-height: 100vh;
 		padding: 10px;
 		margin: 10px;
 	}

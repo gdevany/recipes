@@ -1,7 +1,7 @@
 <template>
 	<div class="row justify-content-center mainDivHeader">
 		<div class="col-12 d-flex justify-content-center title-done">
-			<img src="../assets/ydsyummys.png" class="d-inline-block align-top">
+			<img :src="image" class="d-inline-block align-top">
 		</div>
 		<hr>
 		<hr>
@@ -19,7 +19,7 @@ import { mapActions } from 'vuex';
 export default {
 	data() {
 		return {
-			// image: "../assets/ydsyummys.png"
+			image: require("../assets/ydsyummys.png")
 		}
 	},
 	methods: {

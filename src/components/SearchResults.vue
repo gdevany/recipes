@@ -7,7 +7,7 @@
 			<div class="d-flex flex-column align-items-center">
 				<img :src="recipe.url" />
 				<h4>{{ recipe.title }}</h4>
-				<span>{{ recipe.description }}</span>
+				<span class="text-center">{{ recipe.description }}</span>
 			</div>
 		</div>
 	</div>
@@ -58,7 +58,7 @@ export default {
 	}
 
 	.results {
-		min-width: 15rem;
+		width: 15rem;
 		margin: 2rem;
 	}
 </style>

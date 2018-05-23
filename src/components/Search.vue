@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 justify-content-center">
+  <div class="col-12 justify-content-center mainDivSearch">
 		<h1 class="col-12 text-center">Search</h1>
 		<div class="col-12 text-center title-done">Select one:</div>
 		<span class="form-check form-check-inline title-done" v-for="food in foodSubjects">
@@ -46,6 +46,12 @@ export default {
 
 	button {
 		margin: 0;
+	}
+
+	.mainDivSearch {
+		background-color: #42aba85e;
+		opacity: 1;
+		/* z-index: 1; */
 	}
 
 	.title-done {
