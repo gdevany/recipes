@@ -6,14 +6,14 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
 	state: {
 		message: 'Hello',
-		foodSubjects: ['breakfast','dinner','desert','bread','sauce/dip','drink','other'],
+		foodSubjects: ['favorites','breakfast','dinner','desert','bread','sauce/dip','drink','other'],
 		pageSelected: 'home',
 		cloudinaryProjectFile: 'devany/recipes/',
 		CLOUDINARY_UPLOAD_PRESET: 'eajtwfr4',
 		CLOUDINARY_UPLOAD_URL: 'https://api.cloudinary.com/v1_1/gdevany/image/upload',
 		projectMainImageTag: 'recipe',
 		loggedIn: false,
-		searchWord: '',
+		searchWord: 'favorites',
 		cloudName: 'gdevany',
 		cloudinaryFilePath: 'devany/recipes'
 	},
@@ -29,7 +29,9 @@ export const store = new Vuex.Store({
 			state.pageSelected = payload
 		},
 		searchWordChosen: (state, payload) => {
-			state.searchWord = payload;
+			payload === 'other' ?
+				state.searchWord = 'recipe'
+				: state.searchWord = payload;
 		}
 	},
 

@@ -1,8 +1,14 @@
 <template>
-  <div class="row col-12 justify-content-center mainDivSearchResults">
-		<h1 class="col-12 text-center">Search Results</h1>
-		<h4 class="col-12 text-center">{{ this.$store.state.searchWord }}</h4>
-		<span class="col-12 text-center title-done">Select one:</span>
+  <div class="col-12 col-lg-8 offset-lg-2 justify-content-center mainDivSearchResults">
+		<div class="" v-if="this.$store.state.pageSelected !=='home'">
+			<h1 class="col-12 text-center">Search Results</h1>
+			<h4 class="col-12 text-center">{{ this.$store.state.searchWord }}</h4>
+			<div class="col-12 text-center title-done">Select one:</div>
+		</div>
+		<div v-else class="text-center">
+			<h3>Mmm  Mmm  good stuff</h3>
+		</div>
+
 		<div v-for="recipe in recipes" class="results">
 			<div class="d-flex flex-column align-items-center">
 				<img :src="recipe.url" />
@@ -29,6 +35,7 @@ export default {
 		])
 	},
 	created() {
+		//GET image filtered by state.searchWord (which was set in Search.vue)
 		axios.get(
       `https://res.cloudinary.com/${this.$store.state.cloudName}/image/list/${this.$store.state.searchWord}.json`
     ).then(res => {
@@ -48,13 +55,15 @@ export default {
 
 <style scoped>
 	img {
-		width: 100px;
-		height: 100px;
+		width: 20rem;
+		height: auto;
 		margin: 10px;
 	}
 
 	.mainDivSearchResults {
+		padding-top: 3rem;
 		background-color: #e3e8ce;
+		border-radius: 10px;
 	}
 
 	.title-done {
@@ -62,7 +71,7 @@ export default {
 	}
 
 	.results {
-		width: 15rem;
-		margin: 2rem;
+		/* width: 15rem;
+		margin: 2rem; */
 	}
 </style>

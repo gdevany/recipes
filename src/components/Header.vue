@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
 	<div class="row align-items-center flex-column mainDivHeader">
 		<div class="title-done logoDiv">
 			<img :src="image">
@@ -8,7 +8,19 @@
 			<button class="btn btn-primary" @click="setPage('search')">Search</button>
 			<button class="btn btn-primary" @click="setPage('addRecipe')">Add Recipe</button>
 		</div>
-</div>
+	</div>
+</template> -->
+<template>
+	<div class="row align-items-center mainDivHeader">
+		<div class="col-12 col-md-3 logoDiv">
+			<img :src="image">
+		</div>
+		<div class="d-flex justify-content-center col-12 col-md-5 offset-md-4 col-lg-4 offset-lg-5 logoDiv">
+			<button class="btn btn-primary" @click="setPage('home')">Home</button>
+			<button class="btn btn-primary" @click="setPage('search')">Search</button>
+			<button class="btn btn-primary" @click="setPage('addRecipe')">Add Recipe</button>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -30,8 +42,8 @@ export default {
 
 <style scoped>
 	img {
-		/* width: auto;
-		height: 2rem; */
+		width: 100%;
+		height: auto;
 	}
 
 	.title-done {
@@ -55,6 +67,6 @@ export default {
 	}
 
 	button {
-		margin: 10px;
+		margin: 1rem 0.2rem;
 	}
 </style>

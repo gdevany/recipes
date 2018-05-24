@@ -1,7 +1,8 @@
 <template>
-  <div class="col-12 justify-content-center mainDivAddRecipe">
+  <div class="col-12 col-lg-8 offset-lg-2 justify-content-center mainDivAddRecipe">
+		<h1 class="col-12 text-center title-done">Let's add a new Yummy:</h1>
 		<form>
-			<div class="col-12 form-group" v-if="cloudinaryInfo.successDL === false">
+			<div class="col-12 form-group" v-if="!cloudinaryInfo.successDL && !titleGiven">
 				<label for="title"></label>
 				<input
 					autofocus
@@ -10,29 +11,43 @@
 					v-model="cloudinaryInfo.title"
 					@keydown.enter.prevent="titleGiven = true"></input>
 			</div>
-			<div class="col-12 form-group" v-if="cloudinaryInfo.successDL === false">
+			<div class="col-12 text-center headline1 title-done" v-if="!cloudinaryInfo.successDL && titleGiven">
+				<h2>{{ cloudinaryInfo.title }}</h2>
+			</div>
+
+			<div class="col-12 form-group title-done" v-if="!cloudinaryInfo.successDL && titleGiven && !descGiven">
 				<label for="description"></label>
 				<textarea
 					placeholder="Give a description, or just type some key words"
 					rows="3"
 					class="form-control"
 					v-model="cloudinaryInfo.description"
-					@keydown.enter.prevent="titleGiven = true"></textarea>
+					@keydown.enter.prevent="descGiven = true"></textarea>
 			</div>
-			<div class="col-12" v-if="titleGiven === true && cloudinaryInfo.successDL === false">
+			<div class="col-12 text-center headline1 title-done" v-if="!cloudinaryInfo.successDL && descGiven">
+				<span>{{ cloudinaryInfo.description }}</span>
+			</div>
+
+			<div class="col-12" v-if="!cloudinaryInfo.successDL && descGiven">
 				Please select one or more search tags for this recipe:
 			</div>
-			<span class="form-check form-check-inline" v-if='titleGiven === true && cloudinaryInfo.successDL === false' v-for="food in foodSubjects">
-				<label :for='food'>
-					<input
-						type='checkbox'
-						:id='food'
-						:value='food'
-						v-model='cloudinaryInfo.category'>&nbsp{{ food }}
-				</label>
-			</span>
+
+			<div
+				class="title-done d-flex inline-flex flex-wrap justify-content-center"
+				v-if="!cloudinaryInfo.successDL && descGiven">
+				<span class="" v-for="food in foodSubjects">
+						<label :for='food' class="btn btn-outline-info" :class="activateClass(food)">
+							<input
+								type='checkbox'
+								name="options"
+								:id='food'
+								:value='food'
+								v-model='cloudinaryInfo.category'>&nbsp{{ food }}
+						</label>
+				</span>
+			</div>
 		</form>
-  	<div class="col-12" v-if="cloudinaryInfo.category.length > 1 && cloudinaryInfo.successDL === false">
+  	<div class="col-12" v-if="cloudinaryInfo.category.length > 1 && !cloudinaryInfo.successDL">
 			<input
 				type="file"
 				class="form-control title-done"
@@ -40,10 +55,10 @@
 				accept="image/*"/>
 		</div>
 		<div
-				v-if="cloudinaryInfo.successDL === true"
+				v-if="cloudinaryInfo.successDL"
 				v-for="recipe in cloudinaryInfo.recipes"
 				class="col-12 d-flex flex-column align-items-center">
-			<span>Congratulations! You have added another YUMMY!</span>
+			<h4 class="text-center">Congratulations! You have added another YUMMY!</h4>
 			<img :src="recipe.url" />
 			<h2>{{ recipe.title }}</h2>
 			<span>{{ recipe.description }}</span>
@@ -66,6 +81,7 @@ export default {
 		return {
 			foodSubjects: this.$store.state.foodSubjects,
 			titleGiven: false,
+			descGiven: false,
 			cloudinaryInfo: {
 				successDL: false,
 				recipes: [],
@@ -82,6 +98,17 @@ export default {
 		// this.CLOUDINARY_UPLOAD_PRESET = 'eajtwfr4'
 	},
 	methods: {
+		recipeNotYetSubmitted() {
+			if(!cloudinaryInfo.successDL) {
+				return true
+			} else {
+				return false
+			}
+		},
+		activateClass(food) {
+			if(this.cloudinaryInfo.category.includes(food))
+			return {active: true};
+		},
 		...mapActions([
 			'setPage'
 		]),
@@ -118,6 +145,7 @@ export default {
 	img {
 		height: 200px;
 		width: auto;
+		border: 1px solid black;
 	}
 
 	button {
@@ -131,8 +159,13 @@ export default {
 	.mainDivAddRecipe {
 		padding-top: 3rem;
 		background-color: #e3e8ce;
+		border-radius: 10px;
 	}
 
+	.headline1 {
+		/* font-size: 2rem; */
+		color: red;
+	}
 	.title-done {
 		margin-bottom: 3rem;
 	}

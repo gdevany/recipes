@@ -1,5 +1,4 @@
 <template>
-  <!-- <div class="container-fluid mainDivApp" :style=" 'background-image:url(' + bgImage + '); background-size: contain' "> -->
 	<div class="container-fluid mainDivApp">
 		<app-header></app-header>
 		<app-recipes></app-recipes>
@@ -13,7 +12,7 @@ import Recipes from './components/Recipes.vue'
 export default {
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
+      msg: 'Welcome to the best recipes in the world',
 			// bgImage: require("./assets/deserts.png")
     }
   },
@@ -32,9 +31,6 @@ export default {
 	}
 
 	.mainDivApp {
-		/* background-color: #bbc19859; */
 		min-height: 100vh;
-		padding-left: 3rem;
-		padding-right: 3rem;
 	}
 </style>

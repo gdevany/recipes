@@ -1,9 +1,10 @@
 <template>
 	<div class="row mainDivRecipe">
-		<h1
+		<!-- <h1
 			v-if="this.$store.getters.getPageSelected === 'home'"
 			class="col-12 text-center">Home
-		</h1>
+		</h1> -->
+		<recipes-home-page v-if="this.$store.state.pageSelected === 'home'"></recipes-home-page>
 		<recipes-search-page v-if="this.$store.state.pageSelected === 'search'"></recipes-search-page>
 		<recipes-search-results-page v-if="this.$store.state.pageSelected === 'searchResults'"></recipes-search-results-page>
 		<recipes-add-recipe-page v-if="this.$store.state.pageSelected === 'addRecipe'"></recipes-add-recipe-page>
@@ -12,6 +13,7 @@
 </template>
 
 <script>
+import Home from './Home.vue';
 import Search from './Search.vue';
 import SearchResults from './SearchResults.vue';
 import AddRecipe from './AddRecipe.vue';
@@ -36,6 +38,7 @@ export default {
 		])
 	},
 	components: {
+		recipesHomePage: Home,
 		recipesSearchPage: Search,
 		recipesSearchResultsPage: SearchResults,
 		recipesAddRecipePage: AddRecipe
@@ -49,10 +52,11 @@ export default {
 	}
 
 	.mainDivRecipe {
-		/* background-image: url(require("../assets/deserts.png")); */
-		/* background-color: #42aba85e; */
+		background-image: url('~../assets/deserts.png');
+		background-size: contain;
 		min-height: 100vh;
-		padding: 10px;
+		padding-left: 3rem;
+		padding-right: 3rem;
 		margin: 10px;
 	}
 
