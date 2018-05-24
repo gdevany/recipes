@@ -49,9 +49,9 @@ export default {
 	}
 
 	.mainDivSearch {
-		background-color: #42aba85e;
-		opacity: 1;
-		/* z-index: 1; */
+		padding-top: 3rem;
+		background-color: #e3e8ce;
+		opacity: 0.8;
 	}
 
 	.title-done {

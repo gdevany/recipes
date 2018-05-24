@@ -1,5 +1,5 @@
 <template>
-  <div class="row col-12 justify-content-center">
+  <div class="row col-12 justify-content-center mainDivSearchResults">
 		<h1 class="col-12 text-center">Search Results</h1>
 		<h4 class="col-12 text-center">{{ this.$store.state.searchWord }}</h4>
 		<span class="col-12 text-center title-done">Select one:</span>
@@ -51,6 +51,10 @@ export default {
 		width: 100px;
 		height: 100px;
 		margin: 10px;
+	}
+
+	.mainDivSearchResults {
+		background-color: #e3e8ce;
 	}
 
 	.title-done {

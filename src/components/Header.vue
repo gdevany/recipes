@@ -1,11 +1,9 @@
 <template>
-	<div class="row justify-content-center mainDivHeader">
-		<div class="col-12 d-flex justify-content-center title-done">
-			<img :src="image" class="d-inline-block align-top">
+	<div class="row align-items-center flex-column mainDivHeader">
+		<div class="title-done logoDiv">
+			<img :src="image">
 		</div>
-		<hr>
-		<hr>
-		<div class="">
+		<div class="logoDiv">
 			<button class="btn btn-primary" @click="setPage('home')">Home</button>
 			<button class="btn btn-primary" @click="setPage('search')">Search</button>
 			<button class="btn btn-primary" @click="setPage('addRecipe')">Add Recipe</button>
@@ -37,13 +35,22 @@ export default {
 	}
 
 	.title-done {
-		margin-bottom: 3rem;
+		margin-bottom: 2rem;
+	}
+
+	.logoDiv {
+		background-color: #e6e123;
+		border-radius: 5px;
 	}
 
 	.mainDivHeader {
+		background-image: url('~../assets/deserts.png');
+		background-size: contain;
 		margin-bottom: 1.5rem;
+		margin-right: -48px;
+		margin-left: -48px;
 		border-bottom: 1px solid grey;
-		background-color: #809f9e5e;
+		background-color: #2ebbd6;
 		padding: 1.5rem;
 	}
 

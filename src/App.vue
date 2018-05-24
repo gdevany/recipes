@@ -26,8 +26,9 @@ export default {
 
 <style>
 	body {
-		background-image: url('~./assets/deserts.png');
-		background-size: contain;
+		/* background-image: url('~./assets/deserts.png');
+		background-size: contain; */
+		background-color: #fd9355;
 	}
 
 	.mainDivApp {
@@ -35,6 +36,5 @@ export default {
 		min-height: 100vh;
 		padding-left: 3rem;
 		padding-right: 3rem;
-		z-index: 2;
 	}
 </style>

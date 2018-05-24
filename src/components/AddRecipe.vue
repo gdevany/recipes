@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 justify-content-center">
+  <div class="col-12 justify-content-center mainDivAddRecipe">
 		<form>
 			<div class="col-12 form-group" v-if="cloudinaryInfo.successDL === false">
 				<label for="title"></label>
@@ -126,6 +126,11 @@ export default {
 
 	span {
 		margin-bottom: 1rem;
+	}
+
+	.mainDivAddRecipe {
+		padding-top: 3rem;
+		background-color: #e3e8ce;
 	}
 
 	.title-done {
