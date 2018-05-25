@@ -1,18 +1,6 @@
-<!-- <template>
-	<div class="row align-items-center flex-column mainDivHeader">
-		<div class="title-done logoDiv">
-			<img :src="image">
-		</div>
-		<div class="logoDiv">
-			<button class="btn btn-primary" @click="setPage('home')">Home</button>
-			<button class="btn btn-primary" @click="setPage('search')">Search</button>
-			<button class="btn btn-primary" @click="setPage('addRecipe')">Add Recipe</button>
-		</div>
-	</div>
-</template> -->
 <template>
-	<div class="row align-items-center mainDivHeader">
-		<div class="col-12 col-md-3 logoDiv">
+	<div class="row align-items-end mainDivHeader">
+		<div class="col-12 col-sm-3 logoDiv">
 			<img :src="image">
 		</div>
 		<div class="d-flex justify-content-center col-12 col-md-5 offset-md-4 col-lg-4 offset-lg-5 logoDiv">
@@ -56,14 +44,14 @@ export default {
 	}
 
 	.mainDivHeader {
-		background-image: url('~../assets/deserts.png');
+		background-image: url('~../assets/foodHeader.jpg');
 		background-size: contain;
 		margin-bottom: 1.5rem;
 		margin-right: -48px;
 		margin-left: -48px;
 		border-bottom: 1px solid grey;
 		background-color: #2ebbd6;
-		padding: 1.5rem;
+		padding: 1.5rem 1.5rem 0;
 	}
 
 	button {

@@ -52,8 +52,9 @@ export default {
 	}
 
 	.mainDivRecipe {
-		background-image: url('~../assets/deserts.png');
+		background: url('~../assets/deserts.png');
 		background-size: contain;
+		/* background-color: #0000004d; */
 		min-height: 100vh;
 		padding-left: 3rem;
 		padding-right: 3rem;

@@ -3,17 +3,19 @@
 		<div class="" v-if="this.$store.state.pageSelected !=='home'">
 			<h1 class="col-12 text-center">Search Results</h1>
 			<h4 class="col-12 text-center">{{ this.$store.state.searchWord }}</h4>
-			<div class="col-12 text-center title-done">Select one:</div>
 		</div>
 		<div v-else class="text-center">
 			<h3>Mmm  Mmm  good stuff</h3>
 		</div>
+		<div class="col-12 text-center title-done">Click image to toggle size</div>
 
+		<!-- Display each recipe in list created by search -->
 		<div v-for="recipe in recipes" class="results">
-			<div class="d-flex flex-column align-items-center">
-				<img :src="recipe.url" />
+			<div class="d-flex flex-column align-items-center bottom-border title-done">
 				<h4>{{ recipe.title }}</h4>
-				<span class="text-center">{{ recipe.description }}</span>
+				<!-- Clicking image toggles viewer width BIG and SMALL -->
+				<img :src="recipe.url" @click="superSize" :style="{width: superSized + 'vw'}"/>
+				<span class="text-center title-done">{{ recipe.description }}</span>
 			</div>
 		</div>
 	</div>
@@ -26,16 +28,20 @@ import { mapActions } from 'vuex';
 export default {
 	data() {
 		return {
-			recipes: []
+			recipes: [],
+			superSized: 40
 		}
 	},
 	methods: {
+		superSize() {
+			this.superSized === 90 ? this.superSized = 40 : this.superSized = 90;
+		},
 		...mapActions([
 			'setPage'
 		])
 	},
 	created() {
-		//GET image filtered by state.searchWord (which was set in Search.vue)
+		//GET image list and data filtered by state.searchWord (set in Search.vue)
 		axios.get(
       `https://res.cloudinary.com/${this.$store.state.cloudName}/image/list/${this.$store.state.searchWord}.json`
     ).then(res => {
@@ -55,7 +61,7 @@ export default {
 
 <style scoped>
 	img {
-		width: 20rem;
+		/* width: 20rem; */
 		height: auto;
 		margin: 10px;
 	}
@@ -64,10 +70,15 @@ export default {
 		padding-top: 3rem;
 		background-color: #e3e8ce;
 		border-radius: 10px;
+		border: 2px solid black;
 	}
 
 	.title-done {
 		margin-bottom: 3rem;
+	}
+
+	.bottom-border {
+		border-bottom: 1px solid grey;
 	}
 
 	.results {

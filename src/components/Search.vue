@@ -2,15 +2,7 @@
   <div class="col-12 col-lg-8 offset-lg-2 justify-content-center mainDivSearch">
 		<h1 class="col-12 text-center">Search</h1>
 		<div class="col-12 text-center title-done">Select one:</div>
-		<!-- <div class="form-check form-check-inline title-done" v-for="food in foodSubjects">
-			<label :for='food'>
-				<input
-					type='radio'
-					:id='food'
-					:value='food'
-					v-model='foodChosen'>&nbsp{{ food }}
-			</label>
-		</div> -->
+
 		<div class="title-done d-flex inline-flex flex-wrap justify-content-center">
 			<span
 				class=""
@@ -69,6 +61,7 @@ export default {
 		padding-top: 3rem;
 		background-color: #e3e8ce;
 		border-radius: 10px;
+		border: 2px solid black;
 	}
 
 	.title-done {

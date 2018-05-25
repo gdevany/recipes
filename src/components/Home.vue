@@ -10,6 +10,9 @@ import SearchResults from './SearchResults.vue'
 export default {
 	components: {
 		homeSearchResults: SearchResults
+	},
+	created() {
+		window.scroll(0,0);
 	}
 }
 </script>
