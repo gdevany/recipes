@@ -1,5 +1,5 @@
 <template>
-	<div class="row mainDivRecipe">
+	<div class="row mainDivRecipes">
 		<!-- <h1
 			v-if="this.$store.getters.getPageSelected === 'home'"
 			class="col-12 text-center">Home
@@ -51,14 +51,13 @@ export default {
 		margin: 20px;
 	}
 
-	.mainDivRecipe {
-		background: url('~../assets/deserts.png');
+	.mainDivRecipes {
+		background: url('~../assets/stripesRed.jpg');
 		background-size: contain;
 		/* background-color: #0000004d; */
 		min-height: 100vh;
-		padding-left: 3rem;
-		padding-right: 3rem;
-		margin: 10px;
+		padding: 3rem;
+		margin: 0;
 	}
 
 </style>
