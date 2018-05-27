@@ -5,19 +5,25 @@
 			<h4 class="col-12 text-center">{{ this.$store.state.searchWord }}</h4>
 		</div>
 		<div v-else class="text-center">
-			<h3>Mmm  Mmm  good stuff</h3>
+			<h3>Here's some of our favorites</h3>
 		</div>
 		<div class="col-12 text-center title-done">Click image to toggle size</div>
 
 		<!-- Display each recipe in list created by search -->
-		<div v-for="recipe in recipes" class="results">
-			<div class="d-flex flex-column align-items-center bottom-border title-done">
-				<h4>{{ recipe.title }}</h4>
-				<!-- Clicking image toggles viewer width BIG and SMALL -->
-				<img :src="recipe.url" @click="superSize" :style="{width: superSized + 'vw'}"/>
-				<span class="text-center title-done">{{ recipe.description }}</span>
+		<div class="row">
+			<div v-for="(recipe, index) in recipes" class="col-12">
+				<div class="d-flex flex-column align-items-center bottom-border title-done">
+					<h4 class="text-center">{{ recipe.title }}</h4>
+					<!-- Clicking image toggles viewer width BIG and SMALL -->
+					<img
+						:src="recipe.url"
+						@click="superSize(index)"
+						:class="[ chosenOne === index && isActive ? 'showBig' : 'showSmall' ]"/>
+					<span class="text-center title-done">{{ recipe.description }}</span>
+				</div>
 			</div>
 		</div>
+
 	</div>
 </template>
 
@@ -29,13 +35,22 @@ export default {
 	data() {
 		return {
 			recipes: [],
-			superSized: 40
+			// superSized: 10,
+			// smallImgSize: 10,
+			// largeImgSize: 90,
+			isActive: false,
+			chosenOne: -1
 		}
 	},
 	methods: {
-		superSize() {
-			this.superSized === 90 ? this.superSized = 40 : this.superSized = 90;
+		superSize(index) {
+			this.isActive = !this.isActive;
+			this.chosenOne = index;
 		},
+		// superSize() {
+		// 	this.superSized === this.largeImgSize ?
+		// 		this.superSized = this.smallImgSize : this.superSized = this.largeImgSize;
+		// },
 		...mapActions([
 			'setPage'
 		])
@@ -61,9 +76,16 @@ export default {
 
 <style scoped>
 	img {
-		/* width: 20rem; */
 		height: auto;
 		margin: 10px;
+	}
+
+	.showBig {
+		width: 90vw;
+	}
+
+	.showSmall {
+		width: 20vw;
 	}
 
 	.mainDivSearchResults {
@@ -73,16 +95,7 @@ export default {
 		border: 2px solid black;
 	}
 
-	.title-done {
-		margin-bottom: 3rem;
-	}
-
 	.bottom-border {
 		border-bottom: 1px solid grey;
-	}
-
-	.results {
-		/* width: 15rem;
-		margin: 2rem; */
 	}
 </style>

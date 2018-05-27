@@ -90,7 +90,7 @@ export default {
 				category: ['recipe'],
 				uploadPreset: this.$store.state.CLOUDINARY_UPLOAD_PRESET,
 				uploadUrl: this.$store.state.CLOUDINARY_UPLOAD_URL,
-
+				filePath: this.$store.state.cloudinaryFilePath,
 			}
 		}
 	},
@@ -113,15 +113,20 @@ export default {
 			'setPage'
 		]),
     upload: (cInfo, evt) => {
-			console.log(cInfo);
 			let file = evt.target.files;
+			console.log(file[0].name);
+			//removes the images file extension because cloudinary adds it
+			let fileNameIdxOfPeriod = file[0].name.indexOf(".");
+			let fileNameWithoutExtension = file[0].name.slice(0,fileNameIdxOfPeriod);
 			const formData = new FormData();
       formData.append('file', file[0]);
       formData.append('upload_preset', cInfo.uploadPreset);
       formData.append('tags', [cInfo.category]);
 			formData.append('context', `caption=${cInfo.description}|title=${cInfo.title}`)
-      axios.post(cInfo.uploadUrl, formData)
+			formData.append('public_id', `${cInfo.filePath}/${fileNameWithoutExtension}`)
+			axios.post(cInfo.uploadUrl, formData)
 			.then(res => {
+				console.log(res);
         cInfo.recipes.unshift({
           url: res.data.secure_url,
 					title: res.data.context.custom.title,
@@ -166,8 +171,5 @@ export default {
 	.headline1 {
 		/* font-size: 2rem; */
 		color: red;
-	}
-	.title-done {
-		margin-bottom: 3rem;
 	}
 </style>

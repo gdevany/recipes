@@ -17,6 +17,7 @@
 					</label>
 			</span>
 		</div>
+		<div class="text-center">Choosing 'other' will return all recipes</div>
 		<button class="col-12 btn btn-secondary btn-lg btn-block" @click="searchIt">Search</button>
 	</div>
 </template>
@@ -62,9 +63,5 @@ export default {
 		background-color: #e3e8ce;
 		border-radius: 10px;
 		border: 2px solid black;
-	}
-
-	.title-done {
-		margin-bottom: 3rem;
 	}
 </style>
