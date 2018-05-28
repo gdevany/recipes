@@ -1,11 +1,13 @@
 <template>
   <div class="col-12 col-lg-8 offset-lg-2 justify-content-center mainDivAddRecipe">
-		<h1 class="col-12 text-center title-done">Let's add a new Yummy:</h1>
-		<form>
-			<div class="col-12 form-group" v-if="!cloudinaryInfo.successDL && !titleGiven">
+		<add-recipe-login v-if="!this.$store.state.loggedIn"></add-recipe-login>
+		<form v-else>
+			<h1 class="col-12 text-center title-done">Let's add a new Yummy:</h1>
+			<div
+				class="col-12 form-group"
+				v-if="!cloudinaryInfo.successDL && !titleGiven">
 				<label for="title"></label>
 				<input
-					autofocus
 					placeholder="Give it a title"
 					class="form-control"
 					v-model="cloudinaryInfo.title"
@@ -73,7 +75,8 @@
 </template>
 
 <script>
-import axios from 'axios'
+import Login from './Login.vue';
+import axios from 'axios';
 import { mapActions } from 'vuex';
 
 export default {
@@ -138,6 +141,9 @@ export default {
       })
     }
   },
+	components: {
+		addRecipeLogin: Login
+	}
 }
 </script>
 
@@ -169,7 +175,6 @@ export default {
 	}
 
 	.headline1 {
-		/* font-size: 2rem; */
 		color: red;
 	}
 </style>

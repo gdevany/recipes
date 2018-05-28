@@ -1,7 +1,7 @@
 <template>
   <div class="">
 		<div class="col-12 col-lg-8 offset-lg-2 justify-content-center title-done mainDivHome">
-			<div class="text-center header">The Devany family presents</div>
+			<div class="text-center header">The Devany family recipes</div>
 			<div class="text-center">
 				The answer to the endless search for our family recipies
 			</div>
@@ -32,7 +32,7 @@ export default {
 	}
 
 	.header {
-		font-size: 2rem;
+		font-size: 2.5rem;
 		font-weight: bold;
 		font-family: Bauhaus93;
 	}

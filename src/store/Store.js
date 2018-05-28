@@ -32,6 +32,9 @@ export const store = new Vuex.Store({
 			payload === 'other' ?
 				state.searchWord = 'recipe'
 				: state.searchWord = payload;
+		},
+		pwIsCorrect: (state, payload) => {
+				state.loggedIn = payload
 		}
 	},
 
@@ -41,6 +44,9 @@ export const store = new Vuex.Store({
 		},
 		searchWordChosen: ({ commit }, payload) => {
 			commit('searchWordChosen', payload)
+		},
+		pwIsCorrect: ({ commit }, payload) => {
+			commit('pwIsCorrect', payload)
 		}
 	}
 })

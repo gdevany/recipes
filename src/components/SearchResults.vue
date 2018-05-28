@@ -35,9 +35,6 @@ export default {
 	data() {
 		return {
 			recipes: [],
-			// superSized: 10,
-			// smallImgSize: 10,
-			// largeImgSize: 90,
 			isActive: false,
 			chosenOne: -1
 		}
@@ -47,10 +44,6 @@ export default {
 			this.isActive = !this.isActive;
 			this.chosenOne = index;
 		},
-		// superSize() {
-		// 	this.superSized === this.largeImgSize ?
-		// 		this.superSized = this.smallImgSize : this.superSized = this.largeImgSize;
-		// },
 		...mapActions([
 			'setPage'
 		])
@@ -81,7 +74,7 @@ export default {
 	}
 
 	.showBig {
-		width: 90vw;
+		width: 110%;
 	}
 
 	.showSmall {
