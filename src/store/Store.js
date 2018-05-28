@@ -6,7 +6,21 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
 	state: {
 		message: 'Hello',
-		foodSubjects: ['favorites','breakfast','dinner','dessert','bread','sauce/dip','drink','soup','salad','cookies','cake','pie','other'],
+		foodSubjects: [
+			'favorites',
+			'breakfast',
+			'dinner',
+			'dessert',
+			'bread',
+			'sauce/dip',
+			'drink',
+			'soup',
+			'salad',
+			'cookies',
+			'cake',
+			'pie',
+			'other'
+		],
 		pageSelected: 'home',
 		cloudinaryProjectFile: 'devany/recipes/', //this is used to set a projectChosen (not used in this app)
 		CLOUDINARY_UPLOAD_PRESET: 'eajtwfr4',

@@ -11,14 +11,14 @@
 
 		<!-- Display each recipe in list created by search -->
 		<div class="row">
-			<div v-for="(recipe, index) in recipes" class="col-12">
-				<div class="d-flex flex-column align-items-center bottom-border title-done">
+			<div v-for="(recipe, index) in recipes" :class="flexibleClass">
+				<div class="d-flex flex-column align-items-center top-border title-done">
 					<h4 class="text-center">{{ recipe.title }}</h4>
 					<!-- Clicking image toggles viewer width BIG and SMALL -->
 					<img
 						:src="recipe.url"
 						@click="superSize(index)"
-						:class="[ chosenOne === index && isActive ? 'showBig' : 'showSmall' ]"/>
+						:class="isOneActive(index)"/>
 					<span class="text-center title-done">{{ recipe.description }}</span>
 				</div>
 			</div>
@@ -39,7 +39,23 @@ export default {
 			chosenOne: -1
 		}
 	},
+	computed: {
+		flexibleClass() {
+			if(this.isActive) {
+				return "col-12"
+			} else {
+				return "col-12 col-md-6 col-xl-4"
+			}
+		}
+	},
 	methods: {
+		isOneActive(index) {
+			if(!this.isActive) {
+				return 'showSmall'
+			} else if(this.chosenOne === index) {
+				return 'showBig'
+			} else return 'showNone'
+		},
 		superSize(index) {
 			this.isActive = !this.isActive;
 			this.chosenOne = index;
@@ -54,7 +70,6 @@ export default {
       `https://res.cloudinary.com/${this.$store.state.cloudName}/image/list/${this.$store.state.searchWord}.json`
     ).then(res => {
 			this.recipes = res.data.resources.map(t => {
-				console.log(t);
 				return {
 					title: t.context.custom.title,
 					description: t.context.custom.caption,
@@ -78,7 +93,11 @@ export default {
 	}
 
 	.showSmall {
-		width: 20vw;
+		width: 15vw;
+	}
+
+	.showNone {
+		display: none;
 	}
 
 	.mainDivSearchResults {
@@ -88,7 +107,8 @@ export default {
 		border: 2px solid black;
 	}
 
-	.bottom-border {
-		border-bottom: 1px solid grey;
+	.top-border {
+		border: 1px solid grey;
+		padding-top: 2rem;
 	}
 </style>

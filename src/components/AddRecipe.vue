@@ -54,7 +54,7 @@
 				type="file"
 				class="form-control title-done"
 				@change="upload(cloudinaryInfo, $event)"
-				accept="image/*"/>
+				accept="auto"/>
 		</div>
 		<div
 				v-if="cloudinaryInfo.successDL"
