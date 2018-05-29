@@ -47,8 +47,8 @@ export default {
 	}
 
 	.mainDivRecipes {
-		background: url('~../assets/stripesRed.jpg');
-		background-size: contain;
+		background: url('~../assets/stripesRed2.jpg');
+		background-size: 100%;
 		min-height: 100vh;
 		padding: 3rem;
 		margin: 0;
