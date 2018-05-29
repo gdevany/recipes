@@ -170,7 +170,6 @@ export default {
 	.mainDivAddRecipe {
 		padding-top: 3rem;
 		background-color: #e3e8ce;
-		border-radius: 10px;
 		border: 2px solid black;
 	}
 

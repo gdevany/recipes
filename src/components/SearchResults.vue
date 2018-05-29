@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 col-lg-8 offset-lg-2 justify-content-center mainDivSearchResults">
+  <div class="col-12 justify-content-center mainDivSearchResults">
 		<div class="" v-if="this.$store.state.pageSelected !=='home'">
 			<h1 class="col-12 text-center">Search Results</h1>
 			<h4 class="col-12 text-center">{{ this.$store.state.searchWord }}</h4>
@@ -12,9 +12,13 @@
 		<!-- Display each recipe in list created by search -->
 		<div class="row">
 			<div v-for="(recipe, index) in recipes" :class="flexibleClass">
-				<div class="d-flex flex-column align-items-center top-border title-done">
+				<!-- If image is superSized, don't display other elements in the list -->
+				<div
+					v-if="(!isActive) || (isActive && chosenOne === index)"
+					class="d-flex flex-column align-items-center justify-content-center wrapper-box title-done">
 					<h4 class="text-center">{{ recipe.title }}</h4>
-					<!-- Clicking image toggles viewer width BIG and SMALL -->
+					<!-- Clicking image sets isActive, sets chosenOne, and therefore
+					toggles viewer width BIG and SMALL of selected image -->
 					<img
 						:src="recipe.url"
 						@click="superSize(index)"
@@ -84,16 +88,18 @@ export default {
 
 <style scoped>
 	img {
-		height: auto;
 		margin: 10px;
+		border: 8px #fd9355 ridge;
 	}
 
 	.showBig {
 		width: 115%;
+		height: auto;
 	}
 
 	.showSmall {
-		width: 15vw;
+		width: auto;
+		height: 11rem;
 	}
 
 	.showNone {
@@ -103,15 +109,12 @@ export default {
 	.mainDivSearchResults {
 		padding-top: 3rem;
 		background-color: #e3e8ce;
-		border-radius: 10px;
 		border: 2px solid black;
 	}
 
-	.top-border {
-		/* border-style: inset double;
-	 	border-color: #fd9355;
-	 	border-width: medium; */
-		border: medium inset  #fd9355;
-		padding: 2rem;
+	.wrapper-box {
+		border: medium solid  #be6e3f;
+		padding: 2rem 1rem 0;
+		min-height: 25rem;
 	}
 </style>

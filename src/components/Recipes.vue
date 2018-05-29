@@ -1,14 +1,9 @@
 <template>
 	<div class="row mainDivRecipes">
-		<!-- <h1
-			v-if="this.$store.getters.getPageSelected === 'home'"
-			class="col-12 text-center">Home
-		</h1> -->
 		<recipes-home-page v-if="this.$store.state.pageSelected === 'home'"></recipes-home-page>
 		<recipes-search-page v-if="this.$store.state.pageSelected === 'search'"></recipes-search-page>
 		<recipes-search-results-page v-if="this.$store.state.pageSelected === 'searchResults'"></recipes-search-results-page>
 		<recipes-add-recipe-page v-if="this.$store.state.pageSelected === 'addRecipe'"></recipes-add-recipe-page>
-
 	</div>
 </template>
 
@@ -54,7 +49,6 @@ export default {
 	.mainDivRecipes {
 		background: url('~../assets/stripesRed.jpg');
 		background-size: contain;
-		/* background-color: #0000004d; */
 		min-height: 100vh;
 		padding: 3rem;
 		margin: 0;
