@@ -48,6 +48,6 @@ export default {
 		padding-top: 3rem;
 		background-color: #e3e8ce;
 		border-radius: 10px;
-		border: 2px solid black;
+		border: 7px inset #fd9355;
 	}
 </style>

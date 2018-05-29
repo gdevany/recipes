@@ -31,6 +31,10 @@ export default {
 		font-family: candara;
 	}
 
+	.btn-primary {
+		background-color: #17a2b8;
+	}
+
 	.title-done {
 		margin-bottom: 3rem;
 	}

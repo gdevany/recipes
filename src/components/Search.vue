@@ -58,6 +58,10 @@ export default {
 		margin: 0;
 	}
 
+	.btn-outline-info {
+		border-color: red;
+	}
+
 	.mainDivSearch {
 		padding-top: 3rem;
 		background-color: #e3e8ce;

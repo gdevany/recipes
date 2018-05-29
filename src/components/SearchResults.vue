@@ -89,7 +89,7 @@ export default {
 	}
 
 	.showBig {
-		width: 110%;
+		width: 115%;
 	}
 
 	.showSmall {
@@ -108,7 +108,10 @@ export default {
 	}
 
 	.top-border {
-		border: 1px solid grey;
-		padding-top: 2rem;
+		/* border-style: inset double;
+	 	border-color: #fd9355;
+	 	border-width: medium; */
+		border: medium inset  #fd9355;
+		padding: 2rem;
 	}
 </style>
