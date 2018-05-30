@@ -104,8 +104,26 @@ node ./node_modules/vue-gh-pages/index.js --branch gh-pages
 
 ------------------------------------------------------------
 
+Personal note:
 
+$git add .
+$git commit -m "  "
+$npm run deploy
 
+This should maybe save correctly to Github.  May have to '$npm run deploy -p' or
+'$npm run deploy -b' to preserve log, or commit to branch (respectfully).  Not sure on this yet.
+
+** NOTE:  Changes will not appear in Github immediately **
+
+-------------------------------------------------------------
+
+Personal note:
+
+Remove the '/dist/' in the script in index.html to view dev live in localhost:8080.  
+
+** NOTE: Don't forget to put it back before $git add **
+
+-------------------------------------------------------------
 
 ## Build Setup
 
