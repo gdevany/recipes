@@ -1,11 +1,13 @@
 <template>
-  <div class="col-12 justify-content-center mainDivSearchResults">
-		<div class="" v-if="this.$store.state.pageSelected !=='home'">
-			<h1 class="col-12 text-center">Search Results</h1>
-			<h4 class="col-12 text-center">{{ this.$store.state.searchWord }}</h4>
+	<div class="col-12">
+
+  <div class="col-12 col-lg-10 offset-lg-1 justify-content-center mainDivSearchResults">
+		<div class="text-center" v-if="this.$store.state.pageSelected ==='home'">
+			<h3>Here's some of our favorites</h3>
 		</div>
 		<div v-else class="text-center">
-			<h3>Here's some of our favorites</h3>
+			<h1 class="col-12">Search Results</h1>
+			<h4 class="col-12">{{ this.$store.state.searchWord }}</h4>
 		</div>
 		<div class="col-12 text-center title-done">Click image to toggle size</div>
 
@@ -27,8 +29,9 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
+</div>
+
 </template>
 
 <script>
@@ -38,6 +41,7 @@ import { mapActions } from 'vuex';
 export default {
 	data() {
 		return {
+			searchWord: '',
 			recipes: [],
 			isActive: false,
 			chosenOne: -1
@@ -69,16 +73,19 @@ export default {
 		])
 	},
 	created() {
+		this.$store.state.pageSelected === 'home' ?
+			this.searchWord = 'favorites'
+			: this.searchWord = this.$store.state.searchWord
 		//GET image list and data filtered by state.searchWord (set in Search.vue)
 		axios.get(
-      `https://res.cloudinary.com/${this.$store.state.cloudName}/image/list/${this.$store.state.searchWord}.json`
+      `https://res.cloudinary.com/${this.$store.state.cloudName}/image/list/${this.searchWord}.json`
     ).then(res => {
 			this.recipes = res.data.resources.map(t => {
 				return {
 					title: t.context.custom.title,
 					description: t.context.custom.caption,
 					publicId: t.public_id,
-					url: `https://res.cloudinary.com/${this.$store.state.cloudName}/image/upload/v${t.version}/${t.public_id}.jpg`
+					url: `https://res.cloudinary.com/${this.$store.state.cloudName}/image/upload/q_20/v${t.version}/${t.public_id}.jpg`
 				}
 			})
     })
@@ -93,12 +100,13 @@ export default {
 	}
 
 	.showBig {
-		width: 115%;
+		width: 90vw;
 		height: auto;
 	}
 
 	.showSmall {
 		width: auto;
+		max-width: 90vw;
 		height: 11rem;
 	}
 

@@ -50,7 +50,7 @@ export default {
 		background: url('~../assets/stripesRed2.jpg');
 		background-size: 100%;
 		min-height: 100vh;
-		padding: 3rem;
+		padding: 2rem 0;
 		margin: 0;
 	}
 

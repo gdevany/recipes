@@ -32,7 +32,7 @@ export default {
 			'pwIsCorrect'
 		]),
 		pwCheck() {
-			if(this.pwEntered === 'gregiscool') {
+			if(this.pwEntered === 'gregiscool' || this.pwEntered === 'Gregiscool') {
 				this.pwIsCorrect(true)
 			} else {
 				this.pwEntered = '';

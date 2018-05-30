@@ -1,13 +1,13 @@
 <template>
-  <div class="">
-		<div class="col-12 col-lg-8 offset-lg-2 justify-content-center title-done mainDivHome">
-			<div class="text-center header">The Devany family recipes</div>
-			<div class="text-center">
-				The answer to the endless search for our family recipies
+		<div class="col-12 justify-content-center">
+			<div class="col-12 col-lg-10 offset-lg-1 mainDivHome">
+				<div class="text-center header">The Devany family recipes</div>
+				<div class="text-center">
+					The answer to the endless search for our family recipies
+				</div>
 			</div>
+			<home-search-results></home-search-results>
 		</div>
-  	<home-search-results></home-search-results>
-  </div>
 </template>
 
 <script>
@@ -29,6 +29,7 @@ export default {
 		background-color: #e3e8ce;
 		border-radius: 10px;
 	 	border: 7px inset #fd9355;
+		margin-bottom: 2rem;
 	}
 
 	.header {

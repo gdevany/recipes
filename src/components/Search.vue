@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 col-lg-8 offset-lg-2 justify-content-center mainDivSearch">
+  <div class="col-12 col-lg-10 offset-lg-1 justify-content-center mainDivSearch">
 		<h1 class="col-12 text-center">Search</h1>
 		<div class="col-12 text-center title-done">Select one:</div>
 
