@@ -108,6 +108,7 @@ Personal note:
 
 $git add .
 $git commit -m "  "
+$git push
 $npm run deploy
 
 This should maybe save correctly to Github.  May have to '$npm run deploy -p' or
