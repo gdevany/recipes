@@ -60,6 +60,29 @@
 				v-if="cloudinaryInfo.successDL"
 				v-for="recipe in cloudinaryInfo.recipes"
 				class="col-12 d-flex flex-column align-items-center">
+			<h4 class="text-center">Here's your new recipe</h4>
+			<img :src="recipe.url" />
+			<h2>{{ recipe.title }}</h2>
+			<span>{{ recipe.description }}</span>
+			<div v-for="tag in recipe.tags">
+				<button class="btn btn-outline-info">{{ tag }}</button>
+			</div>
+			<button
+				class="btn btn-primary"
+				@click="deleteNewImage(recipe.token)"
+				v-if="cloudinaryInfo.successDL === true">deleteIt
+
+			</button>
+			<button
+				class="btn btn-primary"
+				@click="setPage('home')"
+				v-if="cloudinaryInfo.successDL === true">Home
+			</button>
+		</div>
+		<!-- <div
+				v-if="cloudinaryInfo.successDL"
+				v-for="recipe in cloudinaryInfo.recipes"
+				class="col-12 d-flex flex-column align-items-center">
 			<h4 class="text-center">Congratulations! You have added another YUMMY!</h4>
 			<img :src="recipe.url" />
 			<h2>{{ recipe.title }}</h2>
@@ -70,7 +93,7 @@
 				@click="setPage('home')"
 				v-if="cloudinaryInfo.successDL === true">Take me back home
 			</button>
-		</div>
+		</div> -->
   </div>
 </template>
 
@@ -134,12 +157,22 @@ export default {
           url: res.data.secure_url,
 					title: res.data.context.custom.title,
 					description: res.data.context.custom.caption,
-					tags: res.data.tags
+					tags: res.data.tags,
+					token: res.data.delete_token
         });
 				console.log(res.data);
 				cInfo.successDL = true;
       })
-    }
+    },
+		deleteNewImage(token) {
+			const formData = new FormData();
+			formData.append('token', token);
+			formData.append('upload_preset', this.$store.state.CLOUDINARY_UPLOAD_PRESET);
+			axios.post(this.$store.state.CLOUDINARY_DELETEIMAGE_URL, formData)
+			.then(res => {
+				console.log(res);
+			})
+		}
   },
 	components: {
 		addRecipeLogin: Login
@@ -175,5 +208,9 @@ export default {
 
 	.headline1 {
 		color: red;
+	}
+
+	.btn-outline-info {
+		margin: 0;
 	}
 </style>
