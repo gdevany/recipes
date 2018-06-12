@@ -104,17 +104,11 @@ node ./node_modules/vue-gh-pages/index.js --branch gh-pages
 
 ------------------------------------------------------------
 
-Personal note:
+PERSONAL NOTE:
 
-<!-- $git add .
-$git commit -m "  "
-$git push
-$npm run deploy
+How to save changes:
 
-This should maybe save correctly to Github.  May have to '$npm run deploy -p' or
-'$npm run deploy -b' to preserve log, or commit to branch (respectfully).  Not sure on this yet. -->
-
-Update- just need:
+$git pull
 $git add .
 $git commit -m "  "
 $npm run deploy
