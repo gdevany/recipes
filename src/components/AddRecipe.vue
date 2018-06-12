@@ -4,7 +4,7 @@
 		<add-recipe-login v-if="!this.$store.state.loggedIn"></add-recipe-login>
 		<!-- If logged in, start form to add recipe -->
 		<form v-else>
-			<h1 class="col-12 text-center title-done">Let's add a new Yummy:</h1>
+			<h1 class="col-12 text-center padBottom">Let's add a new Yummy:</h1>
 			<div
 				class="col-12 form-group"
 				v-if="!cloudinaryInfo.successDL && !titleGiven">
@@ -15,11 +15,11 @@
 					v-model="cloudinaryInfo.title"
 					@keydown.enter.prevent="titleGiven = true"></input>
 			</div>
-			<div class="col-12 text-center headline1 title-done" v-if="!cloudinaryInfo.successDL && titleGiven">
+			<div class="col-12 text-center headline1 padBottom" v-if="!cloudinaryInfo.successDL && titleGiven">
 				<h2>{{ cloudinaryInfo.title }}</h2>
 			</div>
 
-			<div class="col-12 form-group title-done" v-if="!cloudinaryInfo.successDL && titleGiven && !descGiven">
+			<div class="col-12 form-group padBottom" v-if="!cloudinaryInfo.successDL && titleGiven && !descGiven">
 				<label for="description"></label>
 				<textarea
 					placeholder="Give a description, or just type some key words"
@@ -28,7 +28,7 @@
 					v-model="cloudinaryInfo.description"
 					@keydown.enter.prevent="descGiven = true"></textarea>
 			</div>
-			<div class="col-12 text-center headline1 title-done" v-if="!cloudinaryInfo.successDL && descGiven">
+			<div class="col-12 text-center headline1 padBottom" v-if="!cloudinaryInfo.successDL && descGiven">
 				<span>{{ cloudinaryInfo.description }}</span>
 			</div>
 
@@ -37,7 +37,7 @@
 			</div>
 
 			<div
-				class="title-done d-flex inline-flex flex-wrap justify-content-center"
+				class="padBottom d-flex inline-flex flex-wrap justify-content-center"
 				v-if="!cloudinaryInfo.successDL && descGiven">
 				<span class="" v-for="food in foodSubjects">
 						<label :for='food' class="btn btn-outline-info" :class="activateClass(food)">
@@ -55,19 +55,19 @@
   	<div class="col-12" v-if="cloudinaryInfo.category.length > 1 && !cloudinaryInfo.successDL">
 			<input
 				type="file"
-				class="form-control title-done"
+				class="form-control padBottom"
 				@change="upload(cloudinaryInfo, $event)"
 				accept="auto"/>
 		</div>
-		<!-- Once successful Image download, show the response -->
+		<!-- Once successful Image download, show the response & give option to delete -->
 		<div
 				v-if="cloudinaryInfo.successDL"
 				v-for="recipe in cloudinaryInfo.recipes"
 				class="col-12 d-flex flex-column align-items-center">
 			<h4 class="text-center">Here's your new recipe</h4>
 			<img :src="recipe.url" />
-			<h2>{{ recipe.title }}</h2>
-			<span>{{ recipe.description }}</span>
+			<h2 class="text-center">{{ recipe.title }}</h2>
+			<span class="text-center">{{ recipe.description }}</span>
 			<div class="d-inline-flex">
 				<div v-for="tag in recipe.tags">
 					<button
@@ -76,17 +76,17 @@
 					</button>
 				</div>
 			</div>
-			<div class="d-inline-flex">
-				<div class="">
+			<div class="row">
+				<div class="col-12 col-sm-6">
 					<button
-						class="btn btn-primary2"
+						class="btn keepDeleteButtons deleteButton"
 						@click="deleteNewImage(recipe.token)"
 						v-if="cloudinaryInfo.successDL === true">Start Over
 					</button>
 				</div>
-				<div class="">
+				<div class="col-12 col-sm-6">
 					<button
-						class="btn btn-primary2"
+						class="btn keepDeleteButtons saveItButton"
 						@click="setPage('home')"
 						v-if="cloudinaryInfo.successDL === true">Keep It
 					</button>
@@ -218,5 +218,20 @@ export default {
 
 	.btn-outline-info {
 		margin: 0;
+	}
+
+	.keepDeleteButtons {
+		margin: 2rem 0;
+		white-space: normal;
+		width: 100%;
+		height: 5rem;
+	}
+
+	.deleteButton {
+		background-color: red;
+	}
+
+	.saveItButton {
+		background-color: green;
 	}
 </style>

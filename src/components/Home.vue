@@ -1,7 +1,7 @@
 <template>
 		<div class="col-12 justify-content-center">
 			<div class="col-12 col-lg-10 offset-lg-1 mainDivHome">
-				<div class="text-center header">The Devany family recipes</div>
+				<div class="text-center header">The {{ familyName }} family recipes</div>
 				<div class="text-center">
 					The answer to the endless search for our family recipies
 				</div>
@@ -16,6 +16,11 @@ import SearchResults from './SearchResults.vue'
 export default {
 	components: {
 		homeSearchResults: SearchResults
+	},
+	data() {
+		return {
+			familyName: this.$store.state.familyName
+		}
 	},
 	created() {
 		window.scroll(0,0);

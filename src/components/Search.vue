@@ -1,9 +1,9 @@
 <template>
   <div class="col-12 col-lg-10 offset-lg-1 justify-content-center mainDivSearch">
 		<h1 class="col-12 text-center">Search</h1>
-		<div class="col-12 text-center title-done">Select one:</div>
+		<div class="col-12 text-center padBottom">Select one:</div>
 
-		<div class="title-done d-flex inline-flex flex-wrap justify-content-center">
+		<div class="padBottom d-flex inline-flex flex-wrap justify-content-center">
 			<span
 				class=""
 				v-for="food in foodSubjects">
@@ -55,7 +55,7 @@ export default {
 	}
 
 	button {
-		margin: 0;
+		margin: 2rem 0;
 	}
 
 	.btn-outline-info {

@@ -6,6 +6,17 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
 	state: {
 		message: 'Hello',
+		sspw: 'GREG',
+		familyName: 'Devany',
+		cloudName: 'gdevany',
+		cloudinaryFilePath: 'devany/recipes',
+		CLOUDINARY_UPLOAD_PRESET: 'eajtwfr4',
+		CLOUDINARY_UPLOAD_URL: `https://api.cloudinary.com/v1_1/${this.cloudName}/image/upload`,
+		CLOUDINARY_DELETEIMAGE_URL: `https://api.cloudinary.com/v1_1/${this.cloudName}/delete_by_token`,
+		projectMainImageTag: 'recipe',
+		pageSelected: 'home',
+		loggedIn: false,
+		searchWord: 'favorites',
 		foodSubjects: [
 			'favorites',
 			'breakfast',
@@ -20,17 +31,7 @@ export const store = new Vuex.Store({
 			'cake',
 			'pie',
 			'other'
-		],
-		pageSelected: 'home',
-		CLOUDINARY_UPLOAD_PRESET: 'eajtwfr4',
-		CLOUDINARY_UPLOAD_URL: 'https://api.cloudinary.com/v1_1/gdevany/image/upload',
-		CLOUDINARY_DELETEIMAGE_URL: 'https://api.cloudinary.com/v1_1/gdevany/delete_by_token',
-		projectMainImageTag: 'recipe',
-		loggedIn: false,
-		searchWord: 'favorites',
-		cloudName: 'gdevany',
-		cloudinaryFilePath: 'devany/recipes',
-		sspw: 'GREG'
+		]
 	},
 
 	getters: {

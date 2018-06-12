@@ -1,7 +1,7 @@
 <template>
   <div class="col-12 col-lg-8 offset-lg-2 justify-content-center mainDivLogin">
 		<div class="">
-			<h1 class="col-12 text-center title-done">Please log in:</h1>
+			<h1 class="col-12 text-center padBottom">Please log in:</h1>
 			<form>
 				<div class="col-12 form-group">
 					<label for="password"></label>

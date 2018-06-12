@@ -9,7 +9,7 @@
 			<h1 class="col-12">Search Results</h1>
 			<h4 class="col-12">{{ this.$store.state.searchWord }}</h4>
 		</div>
-		<div class="col-12 text-center title-done">Click image to toggle size</div>
+		<div class="col-12 text-center padBottom">Click image to toggle size</div>
 
 		<!-- Display each recipe in list created by search -->
 		<div class="row">
@@ -17,7 +17,7 @@
 				<!-- If image is superSized, don't display other elements in the list -->
 				<div
 					v-if="(!isActive) || (isActive && chosenOne === index)"
-					class="d-flex flex-column align-items-center justify-content-center wrapper-box title-done">
+					class="d-flex flex-column align-items-center justify-content-center wrapper-box padBottom">
 					<h4 class="text-center">{{ recipe.title }}</h4>
 					<!-- Clicking image sets isActive, sets chosenOne, and therefore
 					toggles viewer width BIG and SMALL of selected image -->
@@ -25,7 +25,7 @@
 						:src="recipe.url"
 						@click="superSize(index)"
 						:class="isOneActive(index)"/>
-					<span class="text-center title-done">{{ recipe.description }}</span>
+					<span class="text-center padBottom">{{ recipe.description }}</span>
 				</div>
 			</div>
 		</div>
