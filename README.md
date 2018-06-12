@@ -103,12 +103,13 @@ node ./node_modules/vue-gh-pages/index.js -b gh-pages
 node ./node_modules/vue-gh-pages/index.js --branch gh-pages
 
 ------------------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
 
 PERSONAL NOTE:
 
 How to save changes:
 
-($git pull)
 ($git add .)
 ($git commit -m "  ")
 ($npm run deploy)
@@ -116,7 +117,8 @@ How to save changes:
 ** NOTE: '$npm run deploy' will cause local repo to be different than github repo **
 
 ** NOTE:  Changes may not appear in Github immediately **
-
+------------------------------------------------------------
+------------------------------------------------------------
 -------------------------------------------------------------
 
 Personal note:
