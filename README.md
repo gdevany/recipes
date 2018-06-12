@@ -112,7 +112,6 @@ How to save changes:
 ($git add .)
 ($git commit -m "  ")
 ($npm run deploy)
-($git push)
 
 ** NOTE: '$npm run deploy' will cause local repo to be different than github repo **
 
