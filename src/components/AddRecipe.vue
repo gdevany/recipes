@@ -32,7 +32,7 @@
 				<span>{{ cloudinaryInfo.description }}</span>
 			</div>
 
-			<div class="col-12" v-if="!cloudinaryInfo.successDL && descGiven">
+			<div class="col-12 text-center" v-if="!cloudinaryInfo.successDL && descGiven">
 				Please select one or more search tags for this recipe:
 			</div>
 
@@ -68,7 +68,7 @@
 			<img :src="recipe.url" />
 			<h2 class="text-center">{{ recipe.title }}</h2>
 			<span class="text-center">{{ recipe.description }}</span>
-			<div class="d-inline-flex">
+			<div class="d-inline-flex flex-wrap justify-content-center">
 				<div v-for="tag in recipe.tags">
 					<button
 						class="btn btn-outline-info"
@@ -79,16 +79,16 @@
 			<div class="row">
 				<div class="col-12 col-sm-6">
 					<button
-						class="btn keepDeleteButtons deleteButton"
-						@click="deleteNewImage(recipe.token)"
-						v-if="cloudinaryInfo.successDL === true">Start Over
+						class="btn keepDeleteButtons saveItButton"
+						@click="setPage('home')"
+						v-if="cloudinaryInfo.successDL === true">Keep It
 					</button>
 				</div>
 				<div class="col-12 col-sm-6">
 					<button
-						class="btn keepDeleteButtons saveItButton"
-						@click="setPage('home')"
-						v-if="cloudinaryInfo.successDL === true">Keep It
+						class="btn keepDeleteButtons deleteButton"
+						@click="deleteNewImage(recipe.token)"
+						v-if="cloudinaryInfo.successDL === true">Delete this entry and start over
 					</button>
 				</div>
 			</div>
@@ -139,7 +139,6 @@ export default {
 		]),
     upload(cInfo, evt) {
 			let file = evt.target.files;
-			console.log(file[0].name);
 			//removes the images file extension because cloudinary adds it
 			let fileNameIdxOfPeriod = file[0].name.indexOf(".");
 			let fileNameWithoutExtension = file[0].name.slice(0,fileNameIdxOfPeriod);
@@ -151,7 +150,6 @@ export default {
 			formData.append('public_id', `${cInfo.filePath}/${fileNameWithoutExtension}`)
 			axios.post(cInfo.uploadUrl, formData)
 			.then(res => {
-				console.log(res);
 				if(res.data.existing === true) {
 					alert('This file name already exists in the DB. Please rename the file and submit again')
 				}
@@ -162,7 +160,6 @@ export default {
 					tags: res.data.tags,
 					token: res.data.delete_token
         });
-				console.log(res.data);
 				cInfo.successDL = true;
       })
     },
@@ -225,13 +222,15 @@ export default {
 		white-space: normal;
 		width: 100%;
 		height: 5rem;
+		border: 1px solid black;
+		font-size: 1.2rem;
 	}
 
 	.deleteButton {
-		background-color: red;
+		background-color: #ff6868;
 	}
 
 	.saveItButton {
-		background-color: green;
+		background-color: #66bd66;
 	}
 </style>
