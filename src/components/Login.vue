@@ -32,7 +32,7 @@ export default {
 			'pwIsCorrect'
 		]),
 		pwCheck() {
-			if(this.pwEntered === 'gregiscool' || this.pwEntered === 'Gregiscool') {
+			if(this.pwEntered.toUpperCase() === this.$store.state.sspw + 'ISCOOL') {
 				this.pwIsCorrect(true)
 			} else {
 				this.pwEntered = '';

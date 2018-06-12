@@ -1,6 +1,8 @@
 <template>
   <div class="col-12 col-lg-8 offset-lg-2 justify-content-center mainDivAddRecipe">
+		<!-- Show login screen if not logged in yet -->
 		<add-recipe-login v-if="!this.$store.state.loggedIn"></add-recipe-login>
+		<!-- If logged in, start form to add recipe -->
 		<form v-else>
 			<h1 class="col-12 text-center title-done">Let's add a new Yummy:</h1>
 			<div
@@ -49,6 +51,7 @@
 				</span>
 			</div>
 		</form>
+		<!-- If form done, submit it -->
   	<div class="col-12" v-if="cloudinaryInfo.category.length > 1 && !cloudinaryInfo.successDL">
 			<input
 				type="file"
@@ -56,6 +59,7 @@
 				@change="upload(cloudinaryInfo, $event)"
 				accept="auto"/>
 		</div>
+		<!-- Once successful Image download, show the response -->
 		<div
 				v-if="cloudinaryInfo.successDL"
 				v-for="recipe in cloudinaryInfo.recipes"
@@ -64,36 +68,31 @@
 			<img :src="recipe.url" />
 			<h2>{{ recipe.title }}</h2>
 			<span>{{ recipe.description }}</span>
-			<div v-for="tag in recipe.tags">
-				<button class="btn btn-outline-info">{{ tag }}</button>
+			<div class="d-inline-flex">
+				<div v-for="tag in recipe.tags">
+					<button
+						class="btn btn-outline-info"
+						v-if="tag !== 'recipe'">{{ tag }}
+					</button>
+				</div>
 			</div>
-			<button
-				class="btn btn-primary"
-				@click="deleteNewImage(recipe.token)"
-				v-if="cloudinaryInfo.successDL === true">deleteIt
-
-			</button>
-			<button
-				class="btn btn-primary"
-				@click="setPage('home')"
-				v-if="cloudinaryInfo.successDL === true">Home
-			</button>
+			<div class="d-inline-flex">
+				<div class="">
+					<button
+						class="btn btn-primary2"
+						@click="deleteNewImage(recipe.token)"
+						v-if="cloudinaryInfo.successDL === true">Start Over
+					</button>
+				</div>
+				<div class="">
+					<button
+						class="btn btn-primary2"
+						@click="setPage('home')"
+						v-if="cloudinaryInfo.successDL === true">Keep It
+					</button>
+				</div>
+			</div>
 		</div>
-		<!-- <div
-				v-if="cloudinaryInfo.successDL"
-				v-for="recipe in cloudinaryInfo.recipes"
-				class="col-12 d-flex flex-column align-items-center">
-			<h4 class="text-center">Congratulations! You have added another YUMMY!</h4>
-			<img :src="recipe.url" />
-			<h2>{{ recipe.title }}</h2>
-			<span>{{ recipe.description }}</span>
-			<span>{{ recipe.tags }}</span>
-			<button
-				class="btn btn-primary"
-				@click="setPage('home')"
-				v-if="cloudinaryInfo.successDL === true">Take me back home
-			</button>
-		</div> -->
   </div>
 </template>
 
@@ -138,7 +137,7 @@ export default {
 		...mapActions([
 			'setPage'
 		]),
-    upload: (cInfo, evt) => {
+    upload(cInfo, evt) {
 			let file = evt.target.files;
 			console.log(file[0].name);
 			//removes the images file extension because cloudinary adds it
@@ -153,6 +152,9 @@ export default {
 			axios.post(cInfo.uploadUrl, formData)
 			.then(res => {
 				console.log(res);
+				if(res.data.existing === true) {
+					alert('This file name already exists in the DB. Please rename the file and submit again')
+				}
         cInfo.recipes.unshift({
           url: res.data.secure_url,
 					title: res.data.context.custom.title,
@@ -170,7 +172,11 @@ export default {
 			formData.append('upload_preset', this.$store.state.CLOUDINARY_UPLOAD_PRESET);
 			axios.post(this.$store.state.CLOUDINARY_DELETEIMAGE_URL, formData)
 			.then(res => {
-				console.log(res);
+				if(res.data.result === 'ok') {
+					console.log(res);
+					alert('You have successfully deleted this entry');
+					this.setPage('home');
+				}
 			})
 		}
   },

@@ -22,7 +22,6 @@ export const store = new Vuex.Store({
 			'other'
 		],
 		pageSelected: 'home',
-		cloudinaryProjectFile: 'devany/recipes/', //this is used to set a projectChosen (not used in this app)
 		CLOUDINARY_UPLOAD_PRESET: 'eajtwfr4',
 		CLOUDINARY_UPLOAD_URL: 'https://api.cloudinary.com/v1_1/gdevany/image/upload',
 		CLOUDINARY_DELETEIMAGE_URL: 'https://api.cloudinary.com/v1_1/gdevany/delete_by_token',
@@ -30,7 +29,8 @@ export const store = new Vuex.Store({
 		loggedIn: false,
 		searchWord: 'favorites',
 		cloudName: 'gdevany',
-		cloudinaryFilePath: 'devany/recipes'
+		cloudinaryFilePath: 'devany/recipes',
+		sspw: 'GREG'
 	},
 
 	getters: {
