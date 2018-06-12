@@ -106,15 +106,22 @@ node ./node_modules/vue-gh-pages/index.js --branch gh-pages
 
 Personal note:
 
-$git add .
+<!-- $git add .
 $git commit -m "  "
 $git push
 $npm run deploy
 
 This should maybe save correctly to Github.  May have to '$npm run deploy -p' or
-'$npm run deploy -b' to preserve log, or commit to branch (respectfully).  Not sure on this yet.
+'$npm run deploy -b' to preserve log, or commit to branch (respectfully).  Not sure on this yet. -->
 
-** NOTE:  Changes will not appear in Github immediately **
+Update- just need:
+$git add .
+$git commit -m "  "
+$npm run deploy
+
+** NOTE: '$npm run deploy' will cause local repo to be different than github repo **
+
+** NOTE:  Changes may not appear in Github immediately **
 
 -------------------------------------------------------------
 
