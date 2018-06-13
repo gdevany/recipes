@@ -114,6 +114,8 @@ How to save changes:
 ($git commit -m "  ")
 ($npm run deploy)
 
+** NOTE: Might need to add and commit and push without /dist/, then add it before doing the npm run deploy (?)
+
 ** NOTE: '$npm run deploy' will cause local repo to be different than github repo **
 
 ** NOTE:  Changes may not appear in Github immediately **

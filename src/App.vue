@@ -25,8 +25,6 @@ export default {
 
 <style>
 	body {
-		/* background-image: url('~./assets/deserts.png');
-		background-size: contain; */
 		background-color: #fd9355;
 		font-family: candara;
 	}

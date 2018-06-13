@@ -51,9 +51,6 @@ export default {
 		font-family: Bauhaus93;
 		color: #d33664;
 		padding: 0.1rem 0.5rem;
-		/* border-radius: 15px; */
-		/* border-top-right-radius: 15px; */
-		/* border-top-left-radius: 15px; */
 	}
 
 	.mainDivHeader {

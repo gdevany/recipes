@@ -104,6 +104,7 @@ import { mapActions } from 'vuex';
 export default {
 	data() {
 		return {
+			listOfAllRecipes: [],
 			foodSubjects: this.$store.state.foodSubjects,
 			titleGiven: false,
 			descGiven: false,
@@ -120,16 +121,18 @@ export default {
 		}
 	},
 	created() {
-		// this.CLOUDINARY_UPLOAD_PRESET = 'eajtwfr4'
+		// Preload a list of file names of all recipes
+		axios.get(
+			`https://res.cloudinary.com/${this.$store.state.cloudName}/image/list/${this.$store.state.projectMainImageTag}.json`
+		).then(res => {
+			res.data.resources.map(t => {
+				let strippedFileNameIndex = t.public_id.lastIndexOf('/') + 1;
+				let fileName = t.public_id.slice(strippedFileNameIndex);
+				this.listOfAllRecipes.push(fileName);
+			})
+		})
 	},
 	methods: {
-		recipeNotYetSubmitted() {
-			if(!cloudinaryInfo.successDL) {
-				return true
-			} else {
-				return false
-			}
-		},
 		activateClass(food) {
 			if(this.cloudinaryInfo.category.includes(food))
 			return {active: true};
@@ -139,9 +142,16 @@ export default {
 		]),
     upload(cInfo, evt) {
 			let file = evt.target.files;
-			//removes the images file extension because cloudinary adds it
+
+			// Remove the image file extension because cloudinary adds it
 			let fileNameIdxOfPeriod = file[0].name.indexOf(".");
 			let fileNameWithoutExtension = file[0].name.slice(0,fileNameIdxOfPeriod);
+
+			// Check if file name exists first, if so -> add Random # to new name
+			if(this.listOfAllRecipes.includes(fileNameWithoutExtension)) {
+				fileNameWithoutExtension = fileNameWithoutExtension + Math.floor(Math.random()*1000);
+			}
+
 			const formData = new FormData();
       formData.append('file', file[0]);
       formData.append('upload_preset', cInfo.uploadPreset);
@@ -150,9 +160,6 @@ export default {
 			formData.append('public_id', `${cInfo.filePath}/${fileNameWithoutExtension}`)
 			axios.post(cInfo.uploadUrl, formData)
 			.then(res => {
-				if(res.data.existing === true) {
-					alert('This file name already exists in the DB. Please rename the file and submit again')
-				}
         cInfo.recipes.unshift({
           url: res.data.secure_url,
 					title: res.data.context.custom.title,
