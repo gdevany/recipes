@@ -9,7 +9,7 @@
 			<h1 class="col-12">Search Results</h1>
 			<h4 class="col-12">{{ this.$store.state.searchWord }}</h4>
 		</div>
-		<div class="col-12 text-center padBottom">Click image to toggle size</div>
+		<div class="col-12 text-center padBottom"><small>Click image to toggle size</small></div>
 
 		<!-- Display each recipe in list created by search -->
 		<div class="row">
@@ -116,13 +116,15 @@ export default {
 
 	.mainDivSearchResults {
 		padding-top: 3rem;
-		background-color: #e3e8ce;
+		background-color: #4f4a4a;
 		border: 2px solid black;
+		color: #e4e1e1;
 	}
 
 	.wrapper-box {
 		border: medium solid  #be6e3f;
 		padding: 2rem 1rem 0;
 		min-height: 25rem;
+		background-color: #383232;
 	}
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="col-12 col-lg-10 offset-lg-1 justify-content-center mainDivSearch">
 		<h1 class="col-12 text-center">Search</h1>
-		<div class="col-12 text-center padBottom">Select one:</div>
+		<div class="col-12 text-center padBottom"><small>Select one:</small></div>
 
 		<div class="padBottom d-flex inline-flex flex-wrap justify-content-center">
 			<span
@@ -64,7 +64,8 @@ export default {
 
 	.mainDivSearch {
 		padding-top: 3rem;
-		background-color: #e3e8ce;
+		background-color: #4f4a4a;
 		border: 2px solid black;
+		color: #e4e1e1;
 	}
 </style>

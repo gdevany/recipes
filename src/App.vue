@@ -25,12 +25,17 @@ export default {
 
 <style>
 	body {
-		background-color: #fd9355;
+		background-color: #383232;
 		font-family: candara;
 	}
 
+	.container-fluid {
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+
 	.btn-primary {
-		background-color: #17a2b8;
+		background-color: #d33664;
 	}
 
 	.padBottom {
@@ -39,5 +44,9 @@ export default {
 
 	.mainDivApp {
 		min-height: 100vh;
+	}
+
+	.shortPad {
+		padding: 0;
 	}
 </style>

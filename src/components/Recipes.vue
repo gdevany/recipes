@@ -1,8 +1,14 @@
 <template>
 	<div class="row mainDivRecipes">
-		<recipes-home-page v-if="this.$store.state.pageSelected === 'home'"></recipes-home-page>
+		<recipes-home-page
+			v-if="this.$store.state.pageSelected === 'home'"
+			class="shortPad">
+		</recipes-home-page>
 		<recipes-search-page v-if="this.$store.state.pageSelected === 'search'"></recipes-search-page>
-		<recipes-search-results-page v-if="this.$store.state.pageSelected === 'searchResults'"></recipes-search-results-page>
+		<recipes-search-results-page
+			v-if="this.$store.state.pageSelected === 'searchResults'"
+			class="shortPad">
+		</recipes-search-results-page>
 		<recipes-add-recipe-page v-if="this.$store.state.pageSelected === 'addRecipe'"></recipes-add-recipe-page>
 	</div>
 </template>
@@ -50,7 +56,7 @@ export default {
 		background: url('~../assets/stripesRed2.jpg');
 		background-size: 100%;
 		min-height: 100vh;
-		padding: 2rem 0;
+		padding: 1rem 1rem;
 		margin: 0;
 	}
 
