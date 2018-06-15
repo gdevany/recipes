@@ -6,7 +6,6 @@
   "author": "Greg Devany <greg.devany@yahoo.com>",
   "license": "MIT",
   "private": true,
-	"wst": "/dist/",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
